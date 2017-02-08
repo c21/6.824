@@ -17,7 +17,8 @@ Part I: Map/Reduce input and output
   (3).scheduler (schedule and handle failures): schedule.go
   (4).RPC (master, worker, and common): common_rpc.go, master_rpc.go, worker.go
   * Go has support for RPC (rpc), thread (goroutine: go func(){...}()), synchronization between threads (channel: chan).
-  * Resources for Go: https://golang.org/doc/effective_go.html, https://golang.org/pkg/
+  * Resources for Go: https://golang.org/doc/effective_go.html, https://golang.org/pkg
+  * Resources for RPC: http://nil.csail.mit.edu/6.824/2016/notes/l-rpc.txt  
 
   main/
   (1).User cases (word count, and inverted index): wc.go, ii.go
