@@ -1,0 +1,23 @@
+Part I: Map/Reduce input and output
+1.How mapreduce works
+  (1).A node (master) starts.
+  (2).The master schedules several nodes (map workers) to do the map.
+      (Every map worker gets a piece of user's input files, generates intermediate output files)
+  (3).The master shcedules several nodes (reduce workers) to do the reduce.
+      (Every reduce worker reads intermediate output files, generates each's output files)
+  (4).The master merges output files from reduce workers, and generates user's output file.
+
+  * Master and workers talk with each other by RPC (go rpc), files are all in a shared file system among nodes (e.g. GFS).
+  * Master has to handle workers failure and reschedules failed task to other workers.
+
+2.Code
+  mapreduce/
+  (1).master: master.go, master_splitmerge.go
+  (2).worker (map and reduce): worker.go, common_map.go, common_reduce.go
+  (3).scheduler (schedule and handle failures): schedule.go
+  (4).RPC (master, worker, and common): common_rpc.go, master_rpc.go, worker.go
+  * Go has support for RPC (rpc), thread (goroutine: go func(){...}()), synchronization between threads (channel: chan).
+  * Resources for Go: https://golang.org/doc/effective_go.html, https://golang.org/pkg/
+
+  main/
+  (1).User cases (word count, and inverted index): wc.go, ii.go
