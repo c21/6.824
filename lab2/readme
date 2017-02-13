@@ -1,0 +1,25 @@
+How raft works
+Raft is a protocol to make machines (replicated state machine) progress together.
+Each machine: term, state (follower, candidate, leader) and log (client's commands)
+Each machine communicates via two RPC methods: RequestVote (for leader election), AppendEntries (for pass log)
+Two timeouts: election timeout and heartbeat timeout
+
+(1).leader election
+    follower -> (no RPCs from current leader or candidates in election timeout) candidate
+    candidate -> (send RequestVote RPC to all machines) (1).leader (if get majority vote)
+      (2).candidate (3).follower (get RPC from new term machines)
+   
+(2).log replication (store (in log) and execute client's commands on each machine) 
+    1. client passes command to leader
+    2. leader stores command in its log
+    3. leader passes command (its log) to each machines (via AppendEntries RPC)
+    4. leader executes (applies) command if got majority vote from machines (i.e. majority of machines stores the command).
+    5. leader returns execution result/information to client.
+       leader also passes commit information via heartbeat to each machines (each machines can execute command).
+
+* Each term can only have at most one leader.
+* Log only passes from leader to followers or candidates.
+* Information:
+  http://thesecretlivesofdata.com/raft/
+  https://raft.github.io/
+  https://thesquareplanet.com/blog/students-guide-to-raft/
