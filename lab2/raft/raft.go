@@ -273,6 +273,7 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 		if args.Term > rf.currentTerm {
 			rf.currentTerm = args.Term
 			rf.votedFor = -1
+      rf.state = FOLLOWER
 			// Persist state.
 			rf.persist()
 			// Notify doXXX() that hearing from a new term peer.
@@ -281,6 +282,9 @@ func (rf *Raft) AppendEntries(args AppendEntriesArgs, reply *AppendEntriesReply)
 			}()
 		} else if args.Term == rf.currentTerm {
 			rf.votedFor = args.LeaderId
+      rf.state = FOLLOWER
+      // Persist state.
+      rf.persist()
 			// Notify doXXX() that hearing from a new term peer.
 			go func() {
 				rf.newTermChannel <- true
@@ -303,6 +307,7 @@ func (rf *Raft) sendAppendEntries(server int, args AppendEntriesArgs, reply *App
 	if reply.Term > rf.currentTerm {
 		rf.currentTerm = reply.Term
 		rf.votedFor = -1
+    rf.state = FOLLOWER
 		// Persist state.
 		rf.persist()
 		// Notify doXXX() that hearing from a new term peer.
@@ -344,6 +349,8 @@ func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
 	defer rf.mu.Unlock()
 	reply.Term = rf.currentTerm
 	if args.Term > rf.currentTerm {
+    rf.currentTerm = args.Term
+    rf.state = FOLLOWER
 		// DPrintf("[RequestVote server(%d) term(%d)]: get candidate %d\n",
 		// rf.me, rf.currentTerm, args.CandidateId)
 		if args.LastLogTerm > rf.log[len(rf.log)-1].Term ||
@@ -370,11 +377,6 @@ func (rf *Raft) RequestVote(args RequestVoteArgs, reply *RequestVoteReply) {
 		}
 		// Notify doXXX() that hearing from a new term peer.
 		go func() {
-			rf.mu.Lock()
-			rf.currentTerm = args.Term
-			// Persist state.
-			rf.persist()
-			rf.mu.Unlock()
 			rf.newTermChannel <- true
 		}()
 	} else if args.Term == rf.currentTerm {
@@ -435,14 +437,14 @@ func (rf *Raft) sendRequestVote(server int, args RequestVoteArgs, reply *Request
 	}
 	rf.mu.Lock()
 	if reply.Term > rf.currentTerm {
+    rf.currentTerm = args.Term
+    rf.votedFor = -1
+    rf.state = FOLLOWER
+    // Persist state.
+    rf.persist()
+
 		// Notify doXXX() that hearing from a new term peer.
 		go func() {
-			rf.mu.Lock()
-			rf.currentTerm = args.Term
-			rf.votedFor = -1
-			// Persist state.
-			rf.persist()
-			rf.mu.Unlock()
 			rf.newTermChannel <- true
 		}()
 	}
@@ -705,11 +707,8 @@ loop:
 		case <-rf.newTermChannel:
 			// If candidate gets note from a new term peer,
 			// change state to follower, and return.
-			rf.mu.Lock()
-			rf.state = FOLLOWER
 			// DPrintf("[doCandidate server(%d) term(%d)] degrade to follower\n",
 			// rf.me, rf.currentTerm)
-			rf.mu.Unlock()
 			break loop
 		case <-time.After(timeout * time.Millisecond):
 			// If candidate has election timeout,
@@ -749,11 +748,8 @@ loop:
 		case <-rf.newTermChannel:
 			// If leader gets note from a new term peer,
 			// change state to follower, and return.
-			rf.mu.Lock()
 			// DPrintf("[doLeader server(%d) term(%d)] degrade to follower\n",
 			// rf.me, rf.currentTerm)
-			rf.state = FOLLOWER
-			rf.mu.Unlock()
 			break loop
 		case <-time.After(HEARTBEAT_TIMEOUT_MS * time.Millisecond):
 			// If leader has heartbeat timeout,
