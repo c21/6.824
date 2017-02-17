@@ -1,0 +1,13 @@
+Part A: Key/value service without log compaction
+How key-value service works
+  Each key-value server has one corresponding Raft server behind it.
+  The server exposes 3 RPCs: Put(key, value), Append(key, value), Get(key) to client.
+  (1).client -> (Put/Append/Get) key-value server.
+  (2).key-value server -> (Put/Append/Get) Raft server.
+  (3).After Raft server commits the command, key-value server applies the command to itself (e.g. a map[key]value),
+      and key-value server returns value to client.
+
+  * Only leader key-value server (has leader Raft server) can accept client's command,
+    all key-value servers can apply command.
+  * Fault tolerance: if majority of key-value servers is running, client's command can be executed successfully
+    (guaranteed by Raft's property). 

@@ -1,0 +1,22 @@
+2017/02/13 14:29:07 [doFollower server(1) term(0)] TIMEOUT!!
+2017/02/13 14:29:07 (LEADER) [server:(1) term(1) idx(1) command(101) len_log(2) state(2)]: votedFor:1, commitIndex:1, lastApplied:1 nextIndex:[%!s(int=1) %!s(int=2) %!s(int=2) %!s(int=1) %!s(int=1) %!s(int=1)], matchIndex:[%!s(int=0) %!s(int=1) %!s(int=1) %!s(int=0) %!s(int=0) %!s(int=0)], log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)}]
+
+2017/02/13 14:29:07 (candidate) [server:(2) term(1) idx(1) command(101) len_log(2) state(0)]: votedFor:1, commitIndex:1, lastApplied:1, log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)}]
+
+2017/02/13 14:29:07 (candidate) [server:(0) term(1) idx(1) command(101) len_log(2) state(0)]: votedFor:1, commitIndex:1, lastApplied:1, log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)}]
+
+2017/02/13 14:29:08 [doFollower server(2) term(1)] TIMEOUT!!
+2017/02/13 14:29:08 (LEADER) [server:(2) term(2) idx(2) command(103) len_log(3) state(2)]: votedFor:2, commitIndex:2, lastApplied:2 nextIndex:[%!s(int=3) %!s(int=1) %!s(int=2) %!s(int=2) %!s(int=2) %!s(int=2)], matchIndex:[%!s(int=2) %!s(int=0) %!s(int=2) %!s(int=0) %!s(int=0) %!s(int=0)], log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)} {%!s(int=2) %!s(int=103)}]
+
+2017/02/13 14:29:08 (candidate) [server:(0) term(2) idx(2) command(103) len_log(3) state(0)]: votedFor:2, commitIndex:2, lastApplied:2, log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)} {%!s(int=2) %!s(int=103)}]
+
+2017/02/13 14:29:09 [doFollower server(1) term(2)] TIMEOUT!!
+2017/02/13 14:29:10 [doFollower server(0) term(4)] TIMEOUT!!
+2017/02/13 14:29:10 (candidate) [server:(1) term(5) idx(2) command(103) len_log(3) state(0)]: votedFor:-1, commitIndex:2, lastApplied:2, log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)} {%!s(int=2) %!s(int=103)}]
+
+2017/02/13 14:29:11 (LEADER) [server:(0) term(5) idx(3) command(104) len_log(4) state(2)]: votedFor:0, commitIndex:3, lastApplied:3 nextIndex:[%!s(int=2) %!s(int=4) %!s(int=1) %!s(int=3) %!s(int=3) %!s(int=3)], matchIndex:[%!s(int=3) %!s(int=3) %!s(int=0) %!s(int=0) %!s(int=0) %!s(int=0)], log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)} {%!s(int=2) %!s(int=103)} {%!s(int=5) %!s(int=104)}]
+
+2017/02/13 14:29:11 (candidate) [server:(1) term(5) idx(3) command(104) len_log(4) state(0)]: votedFor:0, commitIndex:3, lastApplied:3, log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)} {%!s(int=2) %!s(int=103)} {%!s(int=5) %!s(int=104)}]
+
+2017/02/13 14:29:11 (candidate) [server:(2) term(5) idx(3) command(104) len_log(4) state(0)]: votedFor:0, commitIndex:3, lastApplied:3, log:[{%!s(int=0) <nil>} {%!s(int=1) %!s(int=101)} {%!s(int=2) %!s(int=103)} {%!s(int=5) %!s(int=104)}]
+
