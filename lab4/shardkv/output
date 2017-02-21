@@ -1,0 +1,35 @@
+2017/02/21 16:59:48 	newConfig: {Num:1 Shards:[100 100 100 100 100 100 100 100 100 100] Groups:map[100:[server-100-0 server-100-1 server-100-2]]}, oldConfig:&{0 [0 0 0 0 0 0 0 0 0 0] map[]}, gid:100, map:map[]
+2017/02/21 16:59:48 	newConfig: {Num:1 Shards:[100 100 100 100 100 100 100 100 100 100] Groups:map[100:[server-100-0 server-100-1 server-100-2]]}, oldConfig:&{0 [0 0 0 0 0 0 0 0 0 0] map[]}, gid:102, map:map[]
+2017/02/21 16:59:48 	newConfig: {Num:1 Shards:[100 100 100 100 100 100 100 100 100 100] Groups:map[100:[server-100-0 server-100-1 server-100-2]]}, oldConfig:&{0 [0 0 0 0 0 0 0 0 0 0] map[]}, gid:101, map:map[]
+2017/02/21 16:59:49 	newConfig: {Num:2 Shards:[100 100 100 100 100 101 101 101 101 101] Groups:map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, oldConfig:&{1 [100 100 100 100 100 100 100 100 100 100] map[100:[%!d(string=server-100-0) %!d(string=server-100-1) %!d(string=server-100-2)]]}, gid:102, map:map[]
+2017/02/21 16:59:49 	newConfig: {Num:2 Shards:[100 100 100 100 100 101 101 101 101 101] Groups:map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, oldConfig:&{1 [100 100 100 100 100 100 100 100 100 100] map[100:[%!d(string=server-100-0) %!d(string=server-100-1) %!d(string=server-100-2)]]}, gid:100, map:map[1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s 5:X3Iwk 7:tCxYN 4:ybKaD]
+2017/02/21 16:59:49 	[move] shard 5 in config 2 success, gid:100, copyKvs:map[7:tCxYN], mykvs:map[0:o4c3s 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 4:ybKaD 5:X3Iwk 7:tCxYN]
+2017/02/21 16:59:49 	newConfig: {Num:2 Shards:[100 100 100 100 100 101 101 101 101 101] Groups:map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2]]}, oldConfig:&{1 [100 100 100 100 100 100 100 100 100 100] map[100:[%!d(string=server-100-0) %!d(string=server-100-1) %!d(string=server-100-2)]]}, gid:101, map:map[]
+2017/02/21 16:59:49 	should get shard 5 in config 2, gid:101
+2017/02/21 16:59:49 	should get shard 6 in config 2, gid:101
+2017/02/21 16:59:49 	should get shard 7 in config 2, gid:101
+2017/02/21 16:59:49 	should get shard 8 in config 2, gid:101
+2017/02/21 16:59:49 	should get shard 9 in config 2, gid:101
+2017/02/21 16:59:49 	get shard 5 in config 2, gid: 101, kvs:map[7:tCxYN]
+2017/02/21 16:59:49 	get shard 6 in config 2, gid: 101, kvs:map[8:gaE5K]
+2017/02/21 16:59:49 	[move] shard 6 in config 2 success, gid:100, copyKvs:map[8:gaE5K], mykvs:map[1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s 5:X3Iwk 7:tCxYN 4:ybKaD]
+2017/02/21 16:59:49 	get shard 7 in config 2, gid: 101, kvs:map[9:8Vx7T]
+2017/02/21 16:59:49 	[move] shard 7 in config 2 success, gid:100, copyKvs:map[9:8Vx7T], mykvs:map[5:X3Iwk 7:tCxYN 4:ybKaD 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s]
+2017/02/21 16:59:49 	get shard 8 in config 2, gid: 101, kvs:map[0:o4c3s]
+2017/02/21 16:59:49 	[move] shard 8 in config 2 success, gid:100, copyKvs:map[0:o4c3s], mykvs:map[4:ybKaD 5:X3Iwk 7:tCxYN 8:gaE5K 9:8Vx7T 0:o4c3s 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi]
+2017/02/21 16:59:49 	get shard 9 in config 2, gid: 101, kvs:map[1:K7goK]
+2017/02/21 16:59:49 	[move] shard 9 in config 2 success, gid:100, copyKvs:map[1:K7goK], mykvs:map[5:X3Iwk 7:tCxYN 4:ybKaD 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s]
+2017/02/21 16:59:49 	newConfig: {Num:3 Shards:[100 100 100 102 102 101 101 101 102 101] Groups:map[100:[server-100-0 server-100-1 server-100-2] 101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, oldConfig:&{2 [100 100 100 100 100 101 101 101 101 101] map[101:[%!d(string=server-101-0) %!d(string=server-101-1) %!d(string=server-101-2)] 100:[%!d(string=server-100-0) %!d(string=server-100-1) %!d(string=server-100-2)]]}, gid:102, map:map[]
+2017/02/21 16:59:49 	should get shard 3 in config 3, gid:102
+2017/02/21 16:59:49 	should get shard 4 in config 3, gid:102
+2017/02/21 16:59:49 	should get shard 8 in config 3, gid:102
+2017/02/21 16:59:49 	newConfig: {Num:4 Shards:[101 102 102 102 102 101 101 101 102 101] Groups:map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, oldConfig:&{2 [100 100 100 100 100 101 101 101 101 101] map[100:[%!d(string=server-100-0) %!d(string=server-100-1) %!d(string=server-100-2)] 101:[%!d(string=server-101-0) %!d(string=server-101-1) %!d(string=server-101-2)]]}, gid:101, map:map[7:tCxYN 8:gaE5K 9:8Vx7T 0:o4c3s 1:K7goK]
+2017/02/21 16:59:49 	newConfig: {Num:4 Shards:[101 102 102 102 102 101 101 101 102 101] Groups:map[101:[server-101-0 server-101-1 server-101-2] 102:[server-102-0 server-102-1 server-102-2]]}, oldConfig:&{2 [100 100 100 100 100 101 101 101 101 101] map[100:[%!d(string=server-100-0) %!d(string=server-100-1) %!d(string=server-100-2)] 101:[%!d(string=server-101-0) %!d(string=server-101-1) %!d(string=server-101-2)]]}, gid:100, map:map[0:o4c3s 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 4:ybKaD 5:X3Iwk 7:tCxYN]
+2017/02/21 16:59:49 	[move] shard 0 in config 4 success, gid:100, copyKvs:map[2:BKVIB], mykvs:map[7:tCxYN 4:ybKaD 5:X3Iwk 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s 1:K7goK]
+2017/02/21 16:59:49 	[move] shard 8 in config 4 success, gid:101, copyKvs:map[0:o4c3s], mykvs:map[8:gaE5K 9:8Vx7T 0:o4c3s 1:K7goK 7:tCxYN]
+2017/02/21 16:59:49 	should get shard 0 in config 4, gid:101
+2017/02/21 16:59:49 	get shard 0 in config 4, gid: 101, kvs:map[2:BKVIB]
+2017/02/21 16:59:49 	[move] shard 1 in config 4 success, gid:100, copyKvs:map[3:ARngI], mykvs:map[4:ybKaD 5:X3Iwk 7:tCxYN 0:o4c3s 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T]
+2017/02/21 16:59:49 	[move] shard 2 in config 4 success, gid:100, copyKvs:map[4:ybKaD], mykvs:map[4:ybKaD 5:X3Iwk 7:tCxYN 8:gaE5K 9:8Vx7T 0:o4c3s 1:K7goK 2:BKVIB 3:ARngI 6:1-hyi]
+2017/02/21 16:59:49 	[move] shard 3 in config 4 success, gid:100, copyKvs:map[5:X3Iwk], mykvs:map[1:K7goK 2:BKVIB 3:ARngI 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s 5:X3Iwk 7:tCxYN 4:ybKaD]
+2017/02/21 16:59:49 	[move] shard 4 in config 4 success, gid:100, copyKvs:map[6:1-hyi], mykvs:map[4:ybKaD 5:X3Iwk 7:tCxYN 6:1-hyi 8:gaE5K 9:8Vx7T 0:o4c3s 1:K7goK 2:BKVIB 3:ARngI]

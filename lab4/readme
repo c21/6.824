@@ -1,0 +1,23 @@
+How sharded key/value service works?
+  sharded meaning: The whole key-value map is partitioned into different parts (shards).
+  In lab 3, each server has whole key-value map, and has same operation on same key-value map.
+  In lab 4, each server is only responsible for some parts of whole key-value map.
+  
+  Here, sharded key/value service contains 2 parts: 1.master 2.groups.
+  1.Master (shard master): exposed API: join(groups), leave(groups), move(shard, group), query() to client(other servers).
+    Master is responsible for assigning which shard to which server.
+    * To tolerate master's failure, it's constructed by a series of raft servers.
+    * Here, shards are assigned to groups evenly.
+  2.Group (replica group):
+    One replica group is a series of servers, responsible for storing some shards.
+    Each shard belongs to only one replica group.
+    The server should periodically query shard master to get the newest configuration,
+    if in newer configuration, there are shards moved, the server should be responsible
+    to move shards to new group, and wait coming shards from other group.
+    * difficulty: move shards between group.  
+
+  * A replica group can be assigned with many shards, a shard can only be assigned with one group.
+  * Sharded key/value service is like several key/value services, and each key/value service
+    itself responsible for its own part of data.
+    So besides each key/value services, we also need a server (shard master) to assign which data to
+    which service.
